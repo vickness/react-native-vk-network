@@ -72,3 +72,26 @@ export default class NetUtils extends NetworkManage{
 }
     
 ```
+```
+NetUtils.get("https://www.apiopen.top/satinApi?type=1&page=1").then(res => {
+        console.log(res);
+});
+```
+```
+//3.同步请求
+(async () => {
+        console.log("同步请求开始");
+        const res1 = await NetUtils.get("https://www.apiopen.top/novelApi");
+        console.log(res1);
+        const res2 = await NetUtils.get("https://www.apiopen.top/novelApi");
+        console.log(res2);
+        const res3 = await NetUtils.post("https://www.apiopen.top/satinApi?type=1&page=1");
+        console.log(res3);
+        const res4 = await NetUtils.post("https://www.apiopen.top/satinApi?type=1&page=1");
+        console.log(res4);
+        const res5 = await NetUtils.get("https://www.apiopen.top/satinApi?type=1&page=1");
+        console.log(res5);
+        console.log("同步请求结束");
+    })();
+
+```
