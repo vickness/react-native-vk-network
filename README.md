@@ -2,7 +2,7 @@
 a network tool with react-native
 # install
 ```
-yarn add rn-network-handle
+npm install rn-network-handle  or  yarn add rn-network-handle
 ```
 # Examples
 ```
