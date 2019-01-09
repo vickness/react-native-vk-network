@@ -1,6 +1,6 @@
-// import NetworkManage from "../src/index";
+import NetworkManage from "./lib/src/index";
 
-export default class NetUtils {
+export default class NetUtils extends NetworkManage {
 
     //配置全局参数
     // static commonParams() {
@@ -18,7 +18,7 @@ export default class NetUtils {
     //     }
     // }
 
-    //配置全局超时时间
+    //配置超时时间
     static commonTimeOut() {
         return 15
     }
@@ -29,7 +29,6 @@ export default class NetUtils {
         console.log(res);
 
         if (!status || !res.hasOwnProperty("code")) {
-
             return {
                 'status' : false,
                 'message' : '网络连接失败，请稍后再试',
@@ -37,8 +36,8 @@ export default class NetUtils {
             };
         }
 
+        //自定义返回数据结构
         if (res.code === 200) {
-
             //请求成功
             return {
                 'status' : true,
@@ -47,7 +46,6 @@ export default class NetUtils {
             }
 
         } else if (res.code === 10001) {
-
             //登录过期
             return {
                 'status' : false,
@@ -56,7 +54,6 @@ export default class NetUtils {
             }
 
         } else {
-
             //请求失败
             return {
                 'status' : false,

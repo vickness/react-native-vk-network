@@ -3,7 +3,7 @@ import NetworkHandle from './NetworkHandle';
 export default class {
 
     //发送GET请求
-    static get(url, params) {
+    static async get(url, params) {
         const requestParams = Object.assign(this.commonParams(), params);
         return new NetworkHandle()
             .setUrl(url)
@@ -14,7 +14,7 @@ export default class {
     }
 
     //发送POST请求
-    static post(url, params) {
+    static async post(url, params) {
         const requestParams = Object.assign(this.commonParams(), params);
         return new NetworkHandle()
             .setUrl(url)
@@ -24,8 +24,8 @@ export default class {
             .post(requestParams, this.isJson())
     }
 
-    //上传文件请求 params, fileName, files
-    static upload(url, params, fileName, files) {
+    //上传图片请求 params, fileName, files
+    static async upload(url, params, fileName, files) {
         const requestParams = Object.assign(this.commonParams(), params);
         return new NetworkHandle()
             .setUrl(url)

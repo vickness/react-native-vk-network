@@ -7,16 +7,8 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
-import NetUtils from "./NetUtils"
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
+import {StyleSheet, Text, View} from 'react-native';
+import NetUtils from "./NetUtils";
 
 const syncRequest = function() {
     (async () => {
@@ -42,9 +34,20 @@ const asyncRequest = function() {
     NetUtils.post("https://www.apiopen.top/satinApi", params).then(res => {
         console.log(res);
     });
+    NetUtils.post("https://www.apiopen.top/satinApi", params).then(res => {
+        console.log(res);
+    });
+    NetUtils.post("https://www.apiopen.top/satinApi", params).then(res => {
+        console.log(res);
+    });
+    NetUtils.post("https://www.apiopen.top/satinApi", params).then(res => {
+        console.log(res);
+    });
+    NetUtils.post("https://www.apiopen.top/satinApi", params).then(res => {
+        console.log(res);
+    });
     console.log("异步请求结束");
 };
-
 
 
 type Props = {};
@@ -52,18 +55,22 @@ export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome} onPress={this._onPressRequest}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+          <Text style={styles.welcome} onPress={this._syncRequestAction}>同步请求</Text>
+          <Text style={styles.welcome} onPress={this._asyncRequest}>异步请求</Text>
       </View>
     );
   }
 
-  _onPressRequest = () => {
-
+  //同步请求
+  _syncRequestAction = () => {
       syncRequest();
+  };
+
+  //异步请求
+  _asyncRequest = () => {
       asyncRequest();
-  }
+  };
+
 }
 
 const styles = StyleSheet.create({

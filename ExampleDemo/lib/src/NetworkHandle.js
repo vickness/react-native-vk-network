@@ -34,7 +34,7 @@ export default class NetworkHandle {
     /** 请求地址*/
     defaultUrl = "";
     /** 请求头*/
-    defaultHeaders = jsonHeaders;
+    defaultHeaders = {};
     /** 数据解析*/
     defaultParserFunc = function(status, res) {return res};
 
@@ -45,7 +45,7 @@ export default class NetworkHandle {
     }
 
     /** 设置请求超时时间*/
-    setTimeOut(time: number) {
+    setTimeOut(time) {
         this.defaultTimeOut = time * 1000;
         return this
     }
@@ -95,7 +95,7 @@ export default class NetworkHandle {
         //遍历图片地址的数组
         images.forEach(imagePath => {
             //创建文件信息
-            const file = {uri: imagePath, name: "image.png", type: 'multipart/form-data'};
+            const file = {uri: imagePath, name: fileName, type: 'multipart/form-data'};
             //添加上传的图片信息
             formData.append(fileName, file);
         });
@@ -114,7 +114,7 @@ export default class NetworkHandle {
         //创建请求超时
         const timeoutPromise = new Promise(reject => {
             setTimeout(() => {
-                reject(new Error("request timeout"))
+                reject("request timeout")
             }, timeout)
         });
         //数据请求
@@ -123,8 +123,13 @@ export default class NetworkHandle {
         return new Promise((resolve, reject) => {
             Promise.race([requestPromise, timeoutPromise])
                 .then(response => {
-                    if (response.ok) return response.json();
-                    else return response.text();
+                    if (response.ok) {
+                        return response.json();
+                    } else if (typeof response.text === "function") {
+                        return response.text();
+                    } else {
+                        return response;
+                    }
                 })
                 .then(response => {
                     const resultData = this.defaultParserFunc(true, response);
