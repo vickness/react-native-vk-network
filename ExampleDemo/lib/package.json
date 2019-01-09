@@ -1,6 +1,6 @@
 {
   "name": "rn-network-handle",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React Native component for HTTP request",
   "main": "src/index.js",
   "scripts": {
