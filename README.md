@@ -27,6 +27,11 @@ NetworkManage.post("https://www.apiopen.top/satinApi", params).then(res => {
 ```
 //2.继承后使用
 export default class NetUtils extends NetworkManage{
+
+    //配置服务器域名
+    static commonHost() {
+        return 'http://https://www.apiopen.top/'
+    }
     
     //配置全局请求头
     static commonHeaders() {
@@ -73,7 +78,7 @@ export default class NetUtils extends NetworkManage{
     
 ```
 ```
-NetUtils.get("https://www.apiopen.top/satinApi?type=1&page=1").then(res => {
+NetUtils.get("satinApi?type=1&page=1").then(res => {
         console.log(res);
 });
 ```
@@ -81,15 +86,15 @@ NetUtils.get("https://www.apiopen.top/satinApi?type=1&page=1").then(res => {
 //3.同步请求
 (async () => {
         console.log("同步请求开始");
-        const res1 = await NetUtils.get("https://www.apiopen.top/novelApi");
+        const res1 = await NetUtils.get("novelApi");
         console.log(res1);
-        const res2 = await NetUtils.get("https://www.apiopen.top/novelApi");
+        const res2 = await NetUtils.get("novelApi");
         console.log(res2);
-        const res3 = await NetUtils.post("https://www.apiopen.top/satinApi?type=1&page=1");
+        const res3 = await NetUtils.post("satinApi?type=1&page=1");
         console.log(res3);
-        const res4 = await NetUtils.post("https://www.apiopen.top/satinApi?type=1&page=1");
+        const res4 = await NetUtils.post("satinApi?type=1&page=1");
         console.log(res4);
-        const res5 = await NetUtils.get("https://www.apiopen.top/satinApi?type=1&page=1");
+        const res5 = await NetUtils.get("satinApi?type=1&page=1");
         console.log(res5);
         console.log("同步请求结束");
     })();
