@@ -8,42 +8,46 @@
 
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import NetUtils from "./NetUtils";
 
+import NetUtils from "./NetUtils";
+import NetworkManage from "./lib/src/index";
+
+/** 同步请求（不需要额外设置的，可以直接使用）*/
 const syncRequest = function() {
     (async () => {
         console.log("同步请求开始");
-        const res1 = await NetUtils.get("https://www.apiopen.top/novelApi");
+        const res1 = await NetworkManage.get("https://www.apiopen.top/novelApi");
         console.log(res1);
-        const res2 = await NetUtils.get("https://www.apiopen.top/novelApi");
+        const res2 = await NetworkManage.get("https://www.apiopen.top/novelApi");
         console.log(res2);
-        const res3 = await NetUtils.post("https://www.apiopen.top/satinApi?type=1&page=1");
+        const res3 = await NetworkManage.post("https://www.apiopen.top/satinApi?type=1&page=1");
         console.log(res3);
-        const res4 = await NetUtils.post("https://www.apiopen.top/satinApi?type=1&page=1");
+        const res4 = await NetworkManage.post("https://www.apiopen.top/satinApi?type=1&page=1");
         console.log(res4);
         console.log("同步请求结束");
     })();
 };
 
+/** 异步请求（需要额外设置的，可以通过继承，重写设置的方法）*/
 const asyncRequest = function() {
     console.log("异步请求开始");
     const params = {
         'type': '1',
         'page': '1'
     };
-    NetUtils.post("https://www.apiopen.top/satinApi", params).then(res => {
+    NetUtils.post("satinApi", params).then(res => {
         console.log(res);
     });
-    NetUtils.post("https://www.apiopen.top/satinApi", params).then(res => {
+    NetUtils.post("satinApi", params).then(res => {
         console.log(res);
     });
-    NetUtils.post("https://www.apiopen.top/satinApi", params).then(res => {
+    NetUtils.post("satinApi", params).then(res => {
         console.log(res);
     });
-    NetUtils.post("https://www.apiopen.top/satinApi", params).then(res => {
+    NetUtils.post("satinApi", params).then(res => {
         console.log(res);
     });
-    NetUtils.post("https://www.apiopen.top/satinApi", params).then(res => {
+    NetUtils.post("satinApi", params).then(res => {
         console.log(res);
     });
     console.log("异步请求结束");

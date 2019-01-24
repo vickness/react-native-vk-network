@@ -14,7 +14,7 @@ const formHeaders = {
 
 //配置表单数据
 function formParamsData(params) {
-    const formData  = new FormData();
+    const formData = new FormData();
     for (const key in params.keys()) {
         formData.append(key, params[key]);
     }
@@ -31,16 +31,24 @@ export default class NetworkHandle {
 
     /** 超时时间，默认10秒*/
     defaultTimeOut = 10 * 1000;
+    /** 主机域名*/
+    host = "";
     /** 请求地址*/
     defaultUrl = "";
     /** 请求头*/
     defaultHeaders = {};
-    /** 数据解析*/
-    defaultParserFunc = function(status, res) {return res};
+    /** 数据解析回调*/
+    defaultParserFunc = function(status, response, url, option) {return response};
+
+    /** 设置主机域名*/
+    setHost(host) {
+        this.host = host;
+        return this
+    }
 
     /** 设置请求地址*/
     setUrl(url) {
-        this.defaultUrl = url;
+        this.defaultUrl = this.host + url;
         return this
     }
 
@@ -117,8 +125,10 @@ export default class NetworkHandle {
                 reject("request timeout")
             }, timeout)
         });
+
         //数据请求
         const requestPromise = fetch(url, option);
+
         //开始请求
         return new Promise((resolve, reject) => {
             Promise.race([requestPromise, timeoutPromise])
@@ -132,11 +142,11 @@ export default class NetworkHandle {
                     }
                 })
                 .then(response => {
-                    const resultData = this.defaultParserFunc(true, response);
+                    const resultData = this.defaultParserFunc(true, response, url, option);
                     resolve(resultData);
                 })
                 .catch(error => {
-                    const errorData = this.defaultParserFunc(false, error);
+                    const errorData = this.defaultParserFunc(false, error, url, option);
                     resolve(errorData);
                 });
         })

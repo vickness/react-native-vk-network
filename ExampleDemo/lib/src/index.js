@@ -6,6 +6,7 @@ export default class {
     static async get(url, params) {
         const requestParams = Object.assign(this.commonParams(), params);
         return new NetworkHandle()
+            .setHost(this.commonHost())
             .setUrl(url)
             .setHeaders(this.commonHeaders())
             .setTimeOut(this.commonTimeOut())
@@ -17,6 +18,7 @@ export default class {
     static async post(url, params) {
         const requestParams = Object.assign(this.commonParams(), params);
         return new NetworkHandle()
+            .setHost(this.commonHost())
             .setUrl(url)
             .setHeaders(this.commonHeaders())
             .setTimeOut(this.commonTimeOut())
@@ -28,11 +30,17 @@ export default class {
     static async upload(url, params, fileName, files) {
         const requestParams = Object.assign(this.commonParams(), params);
         return new NetworkHandle()
+            .setHost(this.commonHost())
             .setUrl(url)
             .setHeaders(this.commonHeaders())
             .setTimeOut(this.commonTimeOut())
             .setParserFunc(this.analysis)
             .upload(requestParams, fileName, files)
+    }
+
+    //配置服务器域名
+    static commonHost() {
+        return ""
     }
 
     //配置全局请求头
@@ -56,7 +64,7 @@ export default class {
     }
 
     //配置全局数据解析
-    static analysis(status, res) {
-        return res;
+    static analysis(status, response, url, option) {
+        return response;
     }
 }
