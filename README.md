@@ -1,15 +1,20 @@
-# rn-network-handle
+# react-native-vk-network
 a network tool with react-native
+
 # install
 ```
-npm install rn-network-handle  or  yarn add rn-network-handle
+npm install react-native-vk-network  
+or  yarn add react-native-vk-network
 ```
+
 # Examples
-```
+
+```javascript
 //导入文件
-import NetworkManage from "rn-network-handle";
+import NetworkManage from "react-native-vk-network";
 ```
-```
+
+```javascript
 //1.直接使用
 NetworkManage.get("https://www.apiopen.top/satinApi?type=1&page=1").then(res => {
         console.log(res);
@@ -24,7 +29,8 @@ NetworkManage.post("https://www.apiopen.top/satinApi", params).then(res => {
 });
 
 ```
-```
+
+```javascript
 //2.继承后使用
 export default class NetUtils extends NetworkManage{
 
@@ -77,12 +83,14 @@ export default class NetUtils extends NetworkManage{
 }
     
 ```
-```
+
+```javascript
 NetUtils.get("satinApi?type=1&page=1").then(res => {
         console.log(res);
 });
 ```
-```
+
+```javascript
 //3.同步请求
 (async () => {
         console.log("同步请求开始");
