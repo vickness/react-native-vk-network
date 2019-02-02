@@ -1,6 +1,6 @@
 {
-  "name": "rn-network-handle",
-  "version": "1.0.1",
+  "name": "react-native-vk-network",
+  "version": "1.0.0",
   "description": "React Native component for HTTP request",
   "main": "src/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vickness/rn-network-handle.git"
+    "url": "git+https://github.com/vickness/react-native-vk-network.git"
   },
   "keywords": [
     "js",
@@ -21,9 +21,9 @@
   "author": "Vick",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vickness/rn-network-handle/issues"
+    "url": "https://github.com/vickness/react-native-vk-network/issues"
   },
-  "homepage": "https://github.com/vickness/rn-network-handle#readme",
+  "homepage": "https://github.com/vickness/react-native-vk-network#readme",
   "dependencies": {
     "query-string": "^6.2.0"
   }
