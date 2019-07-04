@@ -1,0 +1,30 @@
+{
+  "name": "react-native-vk-network",
+  "version": "1.0.1",
+  "description": "React Native component for HTTP request",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vickness/react-native-vk-network.git"
+  },
+  "keywords": [
+    "http",
+    "nework",
+    "fetch",
+    "js",
+    "react",
+    "reactnative"
+  ],
+  "author": "Vick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vickness/react-native-vk-network/issues"
+  },
+  "homepage": "https://github.com/vickness/react-native-vk-network#readme",
+  "dependencies": {
+    "query-string": "^6.2.0"
+  }
+}
