@@ -1,6 +1,6 @@
 {
   "name": "react-native-vk-network",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React Native component for HTTP request",
   "main": "src/index.js",
   "scripts": {
